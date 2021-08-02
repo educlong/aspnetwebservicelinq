@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Db_ProductManagement" Class="Db_ProductManagementDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-M3M3TQ4\SQLEXPRESS;Initial Catalog=Db_ProductManagement;User ID=sa" SettingsObjectName="DataAccessLayer.Properties.Settings" SettingsPropertyName="Db_ProductManagementConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DanhMuc" Member="DanhMucs">
+    <Type Name="DanhMuc">
+      <Column Name="MaDm" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenDm" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="DanhMuc_SanPham" Member="SanPhams" ThisKey="MaDm" OtherKey="MaDm" Type="SanPham" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SanPham" Member="SanPhams">
+    <Type Name="SanPham">
+      <Column Name="MaSp" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenSp" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaDm" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DanhMuc_SanPham" Member="DanhMuc" ThisKey="MaDm" OtherKey="MaDm" Type="DanhMuc" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.InsertSanPham" Method="InsertSanPham">
+    <Parameter Name="mainsertproc" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nameinsertproc" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="giainsertproc" Type="System.Int32" DbType="Int" />
+    <Parameter Name="madminsertproc" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdatePriceSanPham" Method="UpdatePriceSanPham">
+    <Parameter Name="maspupdateproc" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tenspupdateproc" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="dongiaupdateproc" Type="System.Int32" DbType="Int" />
+    <Parameter Name="madmupdateproc" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.QueryAllSanPham" Method="QueryAllSanPham">
+    <ElementType Name="QueryAllSanPhamResult">
+      <Column Name="MaSp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenSp" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaDm" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.QueryDanhMuc" Method="QueryDanhMuc">
+    <ElementType Name="QueryDanhMucResult">
+      <Column Name="MaDm" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenDm" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.QueryDanhMucTheoMaDm" Method="QueryDanhMucTheoMaDm">
+    <Parameter Name="ma" Type="System.Int32" DbType="Int" />
+    <ElementType Name="QueryDanhMucTheoMaDmResult">
+      <Column Name="MaDm" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenDm" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.QuerySanPhamTheoMaDm" Method="QuerySanPhamTheoMaDm">
+    <Parameter Name="maqueryproc" Type="System.Int32" DbType="Int" />
+    <ElementType Name="QuerySanPhamTheoMaDmResult">
+      <Column Name="MaSp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenSp" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaDm" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.QuerySanPhamTheoMaSp" Method="QuerySanPhamTheoMaSp">
+    <Parameter Name="maspqueryproc" Type="System.Int32" DbType="Int" />
+    <ElementType Name="QuerySanPhamTheoMaSpResult">
+      <Column Name="MaSp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenSp" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaDm" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
