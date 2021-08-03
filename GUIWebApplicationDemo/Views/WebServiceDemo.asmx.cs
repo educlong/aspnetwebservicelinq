@@ -9,6 +9,8 @@ using BusinessLogicLayer;
 /** 
  * WebServiceDemo -> Xây dựng Web service SOAP API để truy vấn thay đổi data thông qua kỹ thuật LINQ 
  * ____________________Tương tác Webservice SOAP API (tương tác trên mobile)_________________________
+ * 
+ * FILE NÀY K LIÊN QUAN ĐẾN THIẾT KẾ BACKEND CỦA THIẾT KẾ WEB (ko tương tác vs Controllers và models) 
  */
 
 namespace GUIWebApplicationDemo.Views
